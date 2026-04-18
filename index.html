@@ -2100,7 +2100,7 @@
         </div>
 
         <div class="contact-form reveal reveal-delay-2">
-          <form action="https://formspree.io/f/YOUR_ID" method="POST">
+          <form id="contact-form">
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="name">Name</label>
@@ -2271,6 +2271,17 @@
       backBtn.classList.toggle('visible', window.scrollY > 400);
     }, { passive: true });
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ── Contact form → mailto fallback
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name    = document.getElementById('name').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim() || 'Portfolio Contact';
+      const message = document.getElementById('message').value.trim();
+      const body    = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+      window.location.href = `mailto:hanumank2001@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
 
     // ── Smooth link scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(link => {
