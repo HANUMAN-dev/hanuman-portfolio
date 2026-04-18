@@ -1324,62 +1324,124 @@
       box-shadow: 0 8px 30px rgba(0, 212, 255, 0.6);
     }
 
-    /* ===================== MOBILE NAV ===================== */
-    @media (max-width: 768px) {
-      .hamburger { display: flex; }
+    /* ===================== RESPONSIVE ===================== */
 
+    /* Tablet */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .projects-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+      .skills-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      :root { --nav-height: 64px; }
+
+      .container { padding: 0 16px; }
+
+      /* Nav */
+      .hamburger { display: flex; }
       .nav-links {
         position: fixed;
         top: var(--nav-height);
-        left: 0;
-        right: 0;
-        background: rgba(4, 13, 26, 0.97);
+        left: 0; right: 0;
+        background: rgba(4, 13, 26, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
-        padding: 24px;
+        padding: 20px 16px;
         gap: 4px;
         border-bottom: 1px solid var(--border);
         transform: translateY(-110%);
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 999;
       }
-
       .nav-links.open { transform: translateY(0); }
-
-      .nav-links a {
-        padding: 12px 16px;
-        border-radius: 10px;
-        font-size: 1rem;
-      }
+      .nav-links a { padding: 12px 16px; border-radius: 10px; font-size: 0.95rem; }
 
       /* Sections */
-      section { padding: 70px 0; }
+      section { padding: 60px 0; }
 
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .about-avatar-wrap { width: 220px; height: 220px; }
+      /* Hero */
+      .hero-content { padding: 100px 0 60px; }
+      .hero-badge {
+        font-size: 0.72rem;
+        padding: 5px 12px;
+        gap: 6px;
+        flex-wrap: wrap;
+        max-width: 100%;
+        border-radius: 12px;
+      }
+      .hero-name { font-size: clamp(1.9rem, 8vw, 2.8rem); }
+      .hero-typing-wrapper {
+        font-size: clamp(0.95rem, 4vw, 1.3rem);
+        min-height: 2em;
+      }
+      .hero-bio { font-size: 0.93rem; }
+      .hero-cta { flex-direction: column; gap: 12px; }
+      .btn { width: 100%; justify-content: center; padding: 13px 20px; }
+      .hero-stats {
+        gap: 16px;
+        margin-top: 36px;
+        justify-content: space-between;
+      }
+      .stat-number { font-size: 1.5rem; }
+      .stat-label { font-size: 0.68rem; letter-spacing: 1px; }
+      .hero-scroll-hint { display: none; }
+
+      /* About */
+      .about-avatar-wrap { width: 180px; height: 180px; }
+      .about-avatar-inner { font-size: 5rem; }
       .floating-tag { display: none; }
-      .about-facts { grid-template-columns: 1fr; }
+      .about-facts { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .fact-item { padding: 12px; }
 
-      .projects-grid { grid-template-columns: 1fr; }
+      /* Skills */
+      .skills-grid { grid-template-columns: 1fr; gap: 16px; }
+      .skill-group { padding: 20px; }
 
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      /* Projects */
+      .projects-grid { grid-template-columns: 1fr; gap: 16px; }
+      .project-card { padding: 20px; }
+      .projects-filter { gap: 8px; }
+      .filter-btn { padding: 6px 14px; font-size: 0.78rem; }
 
-      .form-row { grid-template-columns: 1fr; }
-
-      .hero-stats { gap: 24px; }
-
+      /* Timeline */
       .timeline::before { left: 19px; }
+      .timeline-item { gap: 16px; }
+      .timeline-content { padding: 20px; }
+      .timeline-meta { flex-direction: column; align-items: flex-start; gap: 6px; }
 
-      .education-card { flex-direction: column; }
+      /* Certs */
+      .certs-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .cert-card { padding: 20px; }
 
-      .skills-grid { grid-template-columns: 1fr; }
+      /* Education */
+      .education-card { flex-direction: column; padding: 24px; gap: 16px; }
+
+      /* Contact */
+      .contact-form { padding: 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-link-item { padding: 14px 16px; }
+
+      /* Section labels */
+      .section-subtitle { font-size: 0.93rem; margin-bottom: 36px; }
     }
 
+    /* Small phones */
     @media (max-width: 480px) {
-      .hero-cta { flex-direction: column; }
-      .btn { width: 100%; justify-content: center; }
-      .projects-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 14px; }
+      .hero-name { font-size: clamp(1.6rem, 9vw, 2.2rem); }
+      .hero-badge { font-size: 0.68rem; }
+      .about-facts { grid-template-columns: 1fr; }
       .certs-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 12px; }
+      .stat-number { font-size: 1.3rem; }
+      .timeline-dot { width: 32px; height: 32px; font-size: 0.75rem; }
+      .timeline::before { left: 15px; }
+      .timeline-item { gap: 12px; }
+      .section-title { font-size: clamp(1.5rem, 7vw, 2rem); }
+      #back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; }
     }
 
     /* ===================== DIVIDERS ===================== */
